@@ -24,6 +24,11 @@ export class AuthController {
   // NOTE: 本番環境のみsequre属性をtrueにする
   SECURE_FLAG = this.configService.get<string>('NODE_ENV') === 'production';
 
+  @Get('csrf')
+  getCsrfToken(@Req() req: Request): Csrf {
+    return { csrfToken: req.csrfToken() };
+  }
+
   @Post('signup')
   signUp(@Body() dto: AuthDto): Promise<Msg> {
     return this.authService.signUp(dto);
