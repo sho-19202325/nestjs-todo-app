@@ -14,7 +14,7 @@ import { ConfigModule } from '@nestjs/config';
     TodoModule,
     PrismaModule,
     // NOTE: プロジェクト全体にグローバルimportする
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
   ],
   controllers: [AppController],
   providers: [AppService],
