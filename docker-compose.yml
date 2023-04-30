@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     restart: always
+    volumes:
+      - "./postgresql_data:/var/lib/postgresql/data"
     networks:
       - lesson
 networks:

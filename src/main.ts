@@ -7,6 +7,7 @@ import * as csurf from 'csurf';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // NOTE: class-validatorを有効化するための設定
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   // NOTE: corsの設定
   app.enableCors({
