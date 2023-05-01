@@ -21,9 +21,6 @@ export class AuthController {
     private readonly configService: ConfigService,
   ) {}
 
-  // NOTE: 本番環境のみsequre属性をtrueにする
-  SECURE_FLAG = this.configService.get<string>('NODE_ENV') === 'production';
-
   @Get('csrf')
   getCsrfToken(@Req() req: Request): Csrf {
     return { csrfToken: req.csrfToken() };
@@ -45,7 +42,7 @@ export class AuthController {
 
     res.cookie('access_token', jwt.accessToken, {
       httpOnly: true,
-      secure: this.SECURE_FLAG,
+      secure: true,
       sameSite: 'none',
       path: '/',
     });
@@ -59,7 +56,7 @@ export class AuthController {
   logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Msg {
     res.cookie('access_token', '', {
       httpOnly: true,
-      secure: this.SECURE_FLAG,
+      secure: true,
       sameSite: 'none',
       path: '/',
     });

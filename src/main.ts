@@ -19,7 +19,7 @@ async function bootstrap() {
     csurf({
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
+        secure: true,
       },
       value: (req: Request) => {
         return req.header('csrf-token');
