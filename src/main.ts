@@ -12,7 +12,7 @@ async function bootstrap() {
   // NOTE: corsの設定
   app.enableCors({
     credentials: true,
-    origin: ['http://location:3000'],
+    origin: ['http://localhost:3000'],
   });
   app.use(cookieParser());
   app.use(
